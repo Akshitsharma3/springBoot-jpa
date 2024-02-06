@@ -49,4 +49,11 @@ class QueryDataRepoTest {
                 queryDataRepo.findByEmpIdGreaterThan(203L);
         distinctByTech.forEach(System.out::println);
     }
+
+    @Test
+    public void test_findByTechContaining(){
+
+        TcsDataEntity byTechContaining = queryDataRepo.findByTechContaining("py");
+        System.out.println(byTechContaining);
+    }
 }

@@ -14,4 +14,5 @@ public interface QueryDataRepo extends JpaRepository<TcsDataEntity,Long> {
 
     List<TcsDataEntity> findDistinctByTech(String tech);
     List<TcsDataEntity> findByEmpIdGreaterThan(Long empId);
+    TcsDataEntity findByTechContaining(String tech);
 }
