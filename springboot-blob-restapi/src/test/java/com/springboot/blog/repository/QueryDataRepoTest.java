@@ -61,4 +61,9 @@ class QueryDataRepoTest {
                 queryDataRepo.findByEmpIdBetween(202L, 203L);
         byEmpIdBetween.forEach(System.out::println);
     }
+    @Test
+    void test_limit(){
+        List<TcsDataEntity> top2ByOrderByEmpIdDesc = queryDataRepo.findTop2ByOrderByEmpIdDesc();
+        top2ByOrderByEmpIdDesc.forEach(System.out::println);
+    }
 }

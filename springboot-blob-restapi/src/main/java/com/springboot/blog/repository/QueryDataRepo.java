@@ -20,4 +20,6 @@ public interface QueryDataRepo extends JpaRepository<TcsDataEntity, Long> {
     TcsDataEntity findByTechContaining(String tech);
 
     List<TcsDataEntity> findByEmpIdBetween(Long empIdStart,Long empIdEnd );
+
+    List<TcsDataEntity> findTop2ByOrderByEmpIdDesc();
 }
