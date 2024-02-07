@@ -7,15 +7,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class QueryDataRepoTest {
     @Autowired
     private QueryDataRepo queryDataRepo;
 
     @Test
-    public void testQueryJPAByEmpId(){
+    void testQueryJPAByEmpId(){
 
         TcsDataEntity tcsDataEntity = queryDataRepo.findByEmpId(202L).get();
         System.out.println("byEmpId "+tcsDataEntity);
@@ -25,7 +23,7 @@ class QueryDataRepoTest {
 
 
     @Test
-    public void testQueryJPAfindByEmpIdAndTech(){
+    void testQueryJPAfindByEmpIdAndTech(){
 
 
         Optional<TcsDataEntity> byEmpIdAndTech = queryDataRepo.findByEmpIdAndTech(202L, null);
@@ -38,22 +36,29 @@ class QueryDataRepoTest {
     }
 
     @Test
-    public void test_findDistinctByTech(){
+    void test_findDistinctByTech(){
         List<TcsDataEntity> distinctByTech = queryDataRepo.findDistinctByTech(null);
         distinctByTech.forEach(System.out::println);
     }
 
     @Test
-    public void test_findByEmpIdGreaterThan(){
+    void test_findByEmpIdGreaterThan(){
         List<TcsDataEntity> distinctByTech =
                 queryDataRepo.findByEmpIdGreaterThan(203L);
         distinctByTech.forEach(System.out::println);
     }
 
     @Test
-    public void test_findByTechContaining(){
+    void test_findByTechContaining(){
 
         TcsDataEntity byTechContaining = queryDataRepo.findByTechContaining("py");
         System.out.println(byTechContaining);
+    }
+
+    @Test
+    void test_findByEmpId(){
+        List<TcsDataEntity> byEmpIdBetween =
+                queryDataRepo.findByEmpIdBetween(202L, 203L);
+        byEmpIdBetween.forEach(System.out::println);
     }
 }
